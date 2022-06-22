@@ -1,0 +1,698 @@
+<!-- Include from a free CDN -->
+<script src="https://cdn.rawgit.com/caldwell/renderjson/master/renderjson.js"></script>
+
+<!-- Or a local copy -->
+<script src="renderjson.js"></script>
+
+<!-- Element where the list will be created --> 
+<div id="container"></div>
+
+<!-- Element where the list will be created -->
+<!-- https://ourcodeworld.com/articles/read/753/creating-collapsible-tree-structures-from-json-into-html-in-javascript -->
+<div id="container"></div>
+
+<script>
+    // The JSObject that you want to render
+    var data = {
+  "Author": "PuppyQueen",
+  "refrences": "genfanad.fandom.com",
+  "TO-DO": {
+    "Comments1": "Add materials required to smithing and smelting",
+    "Comments2": "Add Materials required for Small Salad, Beef & Vegetables",
+    "Comments3": "Add Materials required for Whittling"
+  },
+  "cooking (R)": {
+    "Level": {
+      "1": {
+        "Roast Potato": {
+          "Materials": "Raw Potato",
+          "Station": "Range"
+        }
+      },
+      "2": {
+        "Cooked Chicken": {
+          "Materials": "Raw Chicken",
+          "Station": "Range"
+        }
+      },
+      "3": {
+        "Small Salad": {
+          "Materials": "",
+          "Station": "Meal Prep"
+        }
+      },
+      "4": {
+        "Chiken & Potato": {
+          "Materials": "Cooked Chicken, Roast potato, Empty Plate",
+          "Station": "Meal Prep"
+        }
+      },
+      "5": {
+        "Crisp Rat": {
+          "Materials": "Raw Rat",
+          "Station": "Range"
+        }
+      },
+      "7": {
+        "Rat & Potato": {
+          "Materials": "Baked Potato, Crisp Rat, Empty Plate",
+          "Station": "Meal Prep"
+        }
+      },
+      "8": {
+        "Roast Vegetable Medley": {
+          "Materials": "Potato, Onion, Carrot",
+          "Station": "Range"
+        }
+      },
+      "10": {
+        "Cooked Beef": {
+          "Materials": "Raw Beef",
+          "Station": "Range"
+        }
+      },
+      "11": {
+        "Chicken & Vegetable Medley": {
+          "Materials": "Cooked Chicken, Roast Vegetable Medley, Empty Plate",
+          "Station": "Meal Prep"
+        }
+      },
+      "13": {
+        "Beef & Potato": {
+          "Materials": "Cooked Beef, Roast Potato, Empty Plate",
+          "Station": "Meal Prep"
+        }
+      },
+      "14": {
+        "Beef & Vegetable Medley": {
+          "Materials": "Cooked Beef, Roast Vegetable Medley, Empty Plate",
+          "Station": "Meal Prep"
+        }
+      },
+      "18": {
+        "Cooked Pork": {
+          "Materials": "Raw Pork",
+          "Station": "Range"
+        }
+      },
+      "22": {
+        "Beef & Vegetables": {
+          "Materials": "",
+          "Station": "Meal Prep"
+        }
+      },
+      "26": {
+        "Pork & Vegetable Medley": {
+          "Materials": "Cooked Pork, Roast Vegetable Medley, Empty Plate ",
+          "Station": "Meal Prep"
+        }
+      }
+    }
+  },
+  "Butchery (M)": {
+    "Level": {
+      "1": {
+        "Departed Chicken": {
+          "Station": "Butchery"
+        }
+      },
+      "5": {
+        "Departed Rat": {
+          "Station": "Butchery"
+        }
+      },
+      "10": {
+        "Departed Cow": {
+          "Station": "Butchery"
+        }
+      },
+      "18": {
+        "Departed Wolf": {
+          "Station": "Butchery"
+        },
+        "Departed Pig": {
+          "Station": "Butchery"
+        }
+      },
+      "20": {
+        "Departed Fox": {
+          "Station": "Butchery"
+        }
+      }
+    }
+  },
+  "Forging (R)": {
+    "smithing": {
+      "Bronze": {
+        "Level": {
+          "1": {
+            "Bronze Crossguard": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Sheet": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze HammerHead": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "2": {
+            "Bronze Comb": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Clasps": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Dagger": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Short": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Helm": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Shield": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "3": {
+            "Bronze Greaves": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Rivets": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Chain": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Pommel": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Chain Shirt": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Cuisses": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Chainlegs": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "4": {
+            "Bronze Chainbody": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Mace": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "5": {
+            "Bronze Long": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Dague": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Kite Shield": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Plates": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "6": {
+            "Bronze Plate Cuisses": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Plate Pauldrons": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Croix": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Queue": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Billets": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Warhammer": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "7": {
+            "Bronze Bascinet": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Vambraces": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Gorget": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Visor": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Cuirass": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Fullhelm": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "8": {
+            "Bronze Counterbalance": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Giant Sword": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Reinforced Billets": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Bronze Platelegs": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "9": {
+            "Bronze Platebody": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          }
+        }
+      },
+      "Iron": {
+        "Level": {
+          "6": {
+            "Iron Croix": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "10": {
+            "Iron Sheet": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron HammerHead": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "12": {
+            "Iron Crossguard": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Comb": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Dagger": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Shield": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "13": {
+            "Iron Clasps": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Short": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Helm": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Greaves": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Rivets": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Chain": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Pommel": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Chain Shirt": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Cuisses": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "14": {
+            "Iron Chainlegs": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Chainbody": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "15": {
+            "Iron Mace": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Long": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "16": {
+            "Iron Dague": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Kite Shield": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "17": {
+            "Iron Warhammer": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "18": {
+            "Iron Plates": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Plate Cuisses": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "20": {
+            "Iron Plate Pauldrons": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Bascinet": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron vambraces": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Gorget": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Visor": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Cuirass": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Fullhelm": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Giant Sword": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "21": {
+            "Iron Counterbalance": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Reinforced Billets": {
+              "Materials": "",
+              "Station": "Anvil"
+            },
+            "Iron Platelegs": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          },
+          "23": {
+            "Iron Platebody": {
+              "Materials": "",
+              "Station": "Anvil"
+            }
+          }
+        }
+      }
+    },
+    "Smelting": {
+      "Bronze Bar": {
+        "Materials": "",
+        "Station": "Forge"
+      },
+      "Iron Bar": {
+        "Materials": "",
+        "Station": "Forge"
+      },
+      "Steel Bar": {
+        "Materials": "",
+        "Station": "Forge"
+      }
+    }
+  },
+  "Mining (M)": {
+    "Level": {
+      "1": {
+        "Copper": {
+          
+        },
+        "Tin": {
+          
+        },
+        "Hard Clay": {
+          
+        }
+      },
+      "15": {
+        "iron": {
+          
+        }
+      }
+    }
+  },
+  "Botany (M)": {
+    "Level": {
+      "1": {
+        "cabbage": {
+          
+        },
+        "potato plant": {
+          
+        }
+      },
+      "2-3": {
+        "Onion": {
+          
+        },
+        "Lettuce": {
+          
+        },
+        "Wheat": {
+          
+        }
+      },
+      "4": {
+        "Carrot": {
+          
+        },
+        "Peas": {
+          
+        }
+      },
+      "5": {
+        "Cucumber": {
+          
+        },
+        "Primrose Flower": {
+          
+        }
+      },
+      "7": {
+        "Corn": {
+          
+        }
+      },
+      "9": {
+        "Beans": {
+          
+        }
+      },
+      "10": {
+        "Flax": {
+          
+        }
+      },
+      "15": {
+        "Tomato": {
+          
+        }
+      },
+      "22": {
+        "Watermelon": {
+          
+        }
+      },
+      "45": {
+        "Rose": {
+          
+        }
+      }
+    }
+  },
+  "Artistry (R)": {
+    "Pottery": {
+      "Level": {
+        "1": {
+          "Unfired Jug": {
+            "Materials": "Wet Clay"
+          }
+        },
+        "3": {
+          "Unfired Pot": {
+            "Materials": "Wet Clay"
+          }
+        },
+        "5": {
+          "Unfired Bowl": {
+            "Materials": "Wet Clay"
+          }
+        },
+        "7": {
+          "Unfired Plate": {
+            "Materials": "Wet Clay"
+          }
+        }
+      }
+    }
+  },
+  "Whittling (R)": {
+    "Level": {
+      "1": {
+        "Empty Bucket": {
+          "Materials": ""
+        },
+        "Arrow": {
+          "Materials": ""
+        }
+      },
+      "3": {
+        "Unstrung Shortbow": {
+          "Materials": ""
+        }
+      },
+      "7": {
+        "Unstrung Longbow": {
+          "Materials": ""
+        }
+      },
+      "8": {
+        "Bronze Arrows": {
+          "Materials": ""
+        },
+        "Wood Slivers": {
+          "Materials": ""
+        }
+      },
+      "10": {
+        "Unstrung Pine Shortbow": {
+          "Materials": ""
+        }
+      },
+      "15": {
+        "Unstrung Pine Longbow": {
+          "Materials": ""
+        }
+      },
+      "17": {
+        "Iron Arrows": {
+          "Materials": ""
+        }
+      },
+      "22": {
+        "Unstrung Oak Shortbow": {
+          "Materials": ""
+        }
+      },
+      "25": {
+        "Unstrung Oak Longbow": {
+          "Materials": ""
+        }
+      },
+      "28": {
+        "Steel Arrows": {
+          "Materials": ""
+        }
+      }
+    }
+  }
+};
+
+    // Render toggable list in the container element
+    document.getElementById("container").appendChild(
+        renderjson(data)
+		
+    );
+</script>
